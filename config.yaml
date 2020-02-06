@@ -33,6 +33,8 @@ diffexp:
       - treated
       - untreated
 
+threads: 8
+
 params:
   star: ""
   cutadapt-se: ""
