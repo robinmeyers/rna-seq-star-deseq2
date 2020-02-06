@@ -25,7 +25,14 @@ diffexp:
       - treated
       - untreated
 
-threads: 8
+
+threads:
+  star: 16
+  deseq2: 8
+
+mem:
+  star: 96gb
+  deseq2: 32gb
 
 params:
   star: ""

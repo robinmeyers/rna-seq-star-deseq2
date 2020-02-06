@@ -26,6 +26,6 @@ rule align:
         # optional parameters
         extra="--quantMode GeneCounts --sjdbGTFfile {} {}".format(
               config["ref"]["annotation"], config["params"]["star"])
-    threads: config["threads"]
+    threads: config["threads"]["star"]
     wrapper:
         "0.49.0/bio/star/align"
