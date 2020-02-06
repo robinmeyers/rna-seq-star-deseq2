@@ -62,7 +62,20 @@ properties:
       - cutadapt-pe
 
   threads:
-    type: integer
+    type: object
+    properties:
+      star:
+        type: integer
+      deseq2:
+        type: integer
+
+mem:
+    type: object
+    properties:
+      star:
+        type: string
+      deseq2:
+        type: string
 
 required:
   - samples
@@ -73,3 +86,4 @@ required:
   - diffexp
   - params
   - threads
+  - mem
