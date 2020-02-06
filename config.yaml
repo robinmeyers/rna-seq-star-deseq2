@@ -43,5 +43,5 @@ mem:
 
 params:
   star: ""
-  cutadapt-se: ""
-  cutadapt-pe: ""
+  cutadapt-se: "--minimum-length 20"
+  cutadapt-pe: "--minimum-length 20"
