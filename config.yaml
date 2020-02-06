@@ -42,6 +42,6 @@ mem:
   deseq2: 32gb
 
 params:
-  star: ""
+  star: "--outSAMtype BAM"
   cutadapt-se: "--minimum-length 20"
   cutadapt-pe: "--minimum-length 20"
