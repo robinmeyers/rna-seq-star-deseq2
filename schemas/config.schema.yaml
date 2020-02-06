@@ -72,3 +72,4 @@ required:
   - pca
   - diffexp
   - params
+  - threads

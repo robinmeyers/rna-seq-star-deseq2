@@ -1,20 +1,19 @@
 def get_fq(wildcards):
     if config["trimming"]["skip"]:
         # no trimming, use raw reads
-        return units.loc[(wildcards.sample, wildcards.unit), ["fq1", "fq2"]].dropna()
+        return units.loc[(wildcards.sample, wildcards.unit), ["fq1", "fq2"]].dropna().to_dict()
     else:
         # yes trimming, use trimmed data
         if not is_single_end(**wildcards):
             # paired-end sample
-            return expand("trimmed/{sample}-{unit}.{group}.fastq.gz",
-                          group=[1, 2], **wildcards)
+            return {'fq1' : expand("trimmed/{sample}-{unit}.1.fastq.gz", **wildcards),
+                    'fq2' : expand("trimmed/{sample}-{unit}.2.fastq.gz", **wildcards)}
         # single end sample
-        return "trimmed/{sample}-{unit}.fastq.gz".format(**wildcards)
+        return {"fq1" : "trimmed/{sample}-{unit}.fastq.gz".format(**wildcards)}
             
 
 rule align:
-    input:
-        sample=get_fq
+    input: unpack(get_fq)
     output:
         # see STAR manual for additional output files
         "star/{sample}-{unit}/Aligned.out.bam",
